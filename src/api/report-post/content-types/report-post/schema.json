@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "report_posts",
+  "info": {
+    "singularName": "report-post",
+    "pluralName": "report-posts",
+    "displayName": "Report-post"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "report_posts"
+    },
+    "post": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::post.post",
+      "inversedBy": "report_post"
+    }
+  }
+}

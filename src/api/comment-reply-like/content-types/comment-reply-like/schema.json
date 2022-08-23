@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "comment_reply_likes",
+  "info": {
+    "singularName": "comment-reply-like",
+    "pluralName": "comment-reply-likes",
+    "displayName": "comment-reply-like"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "comment_reply_likes"
+    },
+    "comment": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::comment.comment",
+      "inversedBy": "comment_reply_like"
+    }
+  }
+}

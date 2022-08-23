@@ -1,0 +1,67 @@
+{
+  "kind": "collectionType",
+  "collectionName": "posts",
+  "info": {
+    "singularName": "post",
+    "pluralName": "posts",
+    "displayName": "post"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "post_title": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "lat": {
+      "type": "float"
+    },
+    "lng": {
+      "type": "float"
+    },
+    "media": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "posts"
+    },
+    "comments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::comment.comment",
+      "mappedBy": "post"
+    },
+    "post_dislike": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::post-dislike.post-dislike",
+      "inversedBy": "post"
+    },
+    "post_like": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::post-like.post-like",
+      "mappedBy": "post"
+    },
+    "report_post": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::report-post.report-post",
+      "inversedBy": "post"
+    }
+  }
+}

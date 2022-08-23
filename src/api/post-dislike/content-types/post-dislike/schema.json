@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "post_dislikes",
+  "info": {
+    "singularName": "post-dislike",
+    "pluralName": "post-dislikes",
+    "displayName": "Post-dislike"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "post_dislikes"
+    },
+    "post": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::post.post",
+      "inversedBy": "post_dislike"
+    }
+  }
+}
