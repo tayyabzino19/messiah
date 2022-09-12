@@ -4,7 +4,8 @@
   "info": {
     "singularName": "comment",
     "pluralName": "comments",
-    "displayName": "Comment"
+    "displayName": "Comment",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -14,26 +15,11 @@
     "message": {
       "type": "string"
     },
-    "time": {
-      "type": "datetime"
-    },
     "users_permissions_user": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "plugin::users-permissions.user",
       "inversedBy": "comments"
-    },
-    "post": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::post.post",
-      "inversedBy": "comments"
-    },
-    "comment_like": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::comment-like.comment-like",
-      "inversedBy": "comment"
     },
     "comment_replies": {
       "type": "relation",
@@ -41,11 +27,28 @@
       "target": "api::comment-reply.comment-reply",
       "mappedBy": "comment"
     },
-    "comment_reply_like": {
+    "comment_reply_likes": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "manyToMany",
       "target": "api::comment-reply-like.comment-reply-like",
-      "inversedBy": "comment"
+      "inversedBy": "comments"
+    },
+    "comment_likes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::comment-like.comment-like"
+    },
+    "posts": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::post.post",
+      "inversedBy": "post_comments"
+    },
+    "likes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::comment-like.comment-like",
+      "mappedBy": "comment"
     }
   }
 }

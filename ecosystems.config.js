@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'yourapp-name',
+      name: 'we-help-api',
       script: 'npm',
       args: 'start',
       env: {

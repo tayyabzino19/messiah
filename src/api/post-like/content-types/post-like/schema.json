@@ -14,15 +14,17 @@
   "attributes": {
     "users_permissions_user": {
       "type": "relation",
-      "relation": "manyToOne",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "post_likes"
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
     },
     "post": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "manyToOne",
       "target": "api::post.post",
-      "inversedBy": "post_like"
+      "inversedBy": "post_supports"
+    },
+    "epoch_id": {
+      "type": "string"
     }
   }
 }

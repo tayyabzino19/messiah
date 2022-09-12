@@ -75,11 +75,17 @@
       "target": "api::comment.comment",
       "mappedBy": "users_permissions_user"
     },
-    "comment_likes": {
+    "full_name": {
+      "type": "string"
+    },
+    "img_url": {
+      "type": "string"
+    },
+    "comment_reply_like": {
       "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::comment-like.comment-like",
-      "mappedBy": "users_permissions_user"
+      "relation": "oneToOne",
+      "target": "api::comment-reply-like.comment-reply-like",
+      "inversedBy": "users_permissions_user"
     },
     "comment_replies": {
       "type": "relation",
@@ -87,29 +93,18 @@
       "target": "api::comment-reply.comment-reply",
       "mappedBy": "users_permissions_user"
     },
-    "comment_reply_likes": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::comment-reply-like.comment-reply-like",
-      "mappedBy": "users_permissions_user"
+    "phone": {
+      "type": "string"
     },
-    "post_dislikes": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::post-dislike.post-dislike",
-      "mappedBy": "users_permissions_user"
+    "gender": {
+      "type": "string"
     },
-    "post_likes": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::post-like.post-like",
-      "mappedBy": "users_permissions_user"
+    "dob": {
+      "type": "date"
     },
-    "report_posts": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::report-post.report-post",
-      "mappedBy": "users_permissions_user"
+    "open_id": {
+      "type": "string",
+      "private": true
     }
   }
 }

@@ -4,7 +4,8 @@
   "info": {
     "singularName": "comment-reply-like",
     "pluralName": "comment-reply-likes",
-    "displayName": "comment-reply-like"
+    "displayName": "comment-reply-like",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -13,15 +14,21 @@
   "attributes": {
     "users_permissions_user": {
       "type": "relation",
-      "relation": "manyToOne",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "comment_reply_likes"
-    },
-    "comment": {
-      "type": "relation",
       "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "comment_reply_like"
+    },
+    "comments": {
+      "type": "relation",
+      "relation": "manyToMany",
       "target": "api::comment.comment",
-      "inversedBy": "comment_reply_like"
+      "mappedBy": "comment_reply_likes"
+    },
+    "comment_reply": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::comment-reply.comment-reply",
+      "inversedBy": "comment_reply_likes"
     }
   }
 }

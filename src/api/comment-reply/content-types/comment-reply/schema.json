@@ -4,7 +4,8 @@
   "info": {
     "singularName": "comment-reply",
     "pluralName": "comment-replies",
-    "displayName": "Comment-reply"
+    "displayName": "Comment-reply",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -25,6 +26,12 @@
       "relation": "manyToOne",
       "target": "plugin::users-permissions.user",
       "inversedBy": "comment_replies"
+    },
+    "comment_reply_likes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::comment-reply-like.comment-reply-like",
+      "mappedBy": "comment_reply"
     }
   }
 }

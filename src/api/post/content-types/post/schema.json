@@ -4,7 +4,8 @@
   "info": {
     "singularName": "post",
     "pluralName": "posts",
-    "displayName": "post"
+    "displayName": "post",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -12,7 +13,7 @@
   "pluginOptions": {},
   "attributes": {
     "post_title": {
-      "type": "string"
+      "type": "text"
     },
     "location": {
       "type": "string"
@@ -24,14 +25,15 @@
       "type": "float"
     },
     "media": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     },
     "users_permissions_user": {
       "type": "relation",
@@ -42,26 +44,59 @@
     "comments": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::comment.comment",
-      "mappedBy": "post"
+      "target": "api::comment.comment"
     },
-    "post_dislike": {
+    "post_dislikes": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::post-dislike.post-dislike",
-      "inversedBy": "post"
+      "relation": "oneToMany",
+      "target": "api::post-dislike.post-dislike"
     },
-    "post_like": {
+    "report_posts": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::post-like.post-like",
-      "mappedBy": "post"
+      "relation": "oneToMany",
+      "target": "api::report-post.report-post"
     },
     "report_post": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "api::report-post.report-post",
-      "inversedBy": "post"
+      "mappedBy": "post"
+    },
+    "post_comments": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::comment.comment",
+      "mappedBy": "posts"
+    },
+    "tag": {
+      "type": "string"
+    },
+    "personName": {
+      "type": "string"
+    },
+    "personContact": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    },
+    "posts_dislikes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::post-dislike.post-dislike",
+      "mappedBy": "post"
+    },
+    "post_favorites": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::post-favorite.post-favorite",
+      "mappedBy": "post"
+    },
+    "post_supports": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::post-like.post-like",
+      "mappedBy": "post"
     }
   }
 }

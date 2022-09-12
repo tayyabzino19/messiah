@@ -4,7 +4,8 @@
   "info": {
     "singularName": "report-post",
     "pluralName": "report-posts",
-    "displayName": "Report-post"
+    "displayName": "Report-post",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -13,13 +14,12 @@
   "attributes": {
     "users_permissions_user": {
       "type": "relation",
-      "relation": "manyToOne",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "report_posts"
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
     },
     "post": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "manyToOne",
       "target": "api::post.post",
       "inversedBy": "report_post"
     }
