@@ -105,6 +105,12 @@
     "open_id": {
       "type": "string",
       "private": true
+    },
+    "notificationToken": {
+      "type": "string"
+    },
+    "thumbnail": {
+      "type": "string"
     }
   }
 }
